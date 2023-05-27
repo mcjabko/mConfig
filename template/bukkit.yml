@@ -1,0 +1,13 @@
+settings:
+  allow-end: {BUKKIT_ALLOW_END}
+  query-plugins: {BUKKIT_QUERY_PLUGINS}
+  shutdown-message: "{BUKKIT_SHUTDOWN_MESSAGE}"
+spawn-limits:
+  monsters: {BUKKIT_SPAWN_LIMIT_MONSTER}
+  animals: {BUKKIT_SPAWN_LIMIT_ANIMAL}
+  water-animals: {BUKKIT_SPAWN_LIMIT_WATER_ANIMAL}
+  water-ambient: {BUKKIT_SPAWN_LIMIT_WATER_AMBIENT}
+  water-underground-creature: {BUKKIT_SPAWN_LIMIT_WATER_UNDERGROUND_CREATURE}
+  axolotls: {BUKKIT_SPAWN_LIMIT_AXOLOTLS}
+  ambient: {BUKKIT_SPAWN_LIMIT_AMBIENT}
+

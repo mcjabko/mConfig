@@ -1,0 +1,55 @@
+
+settings:
+  debug: {SPIGOT_DEBUG}
+  bungeecord: {SPIGOT_BUNGEECORD}
+world-settings:
+    merge-radius:
+      item: {SPIGOT_MERGE_RADIUS_ITEM}
+      exp: {SPIGOT_MERGE_RADIUS_EXP}
+    ticks-per:
+      hopper-transfer: {SPIGOT_TICK_PER_HOPPER_TRANSFER}
+      hopper-check: {SPIGOT_TICK_PER_HOPPER_CHECK}
+    mob-spawn-range: {SPIGOT_MOB_SPAWN_RANGE}
+    item-despawn-rate: {SPIGOT_ITEM_DESPAWN_RATE}
+    arrow-despawn-rate: {SPIGOT_ARROW_DESPAWN_RATE}
+    trident-despawn-rate: {SPIGOT_TRIDENT_DESPAWN_RATE}
+    entity-activation-range:
+      animals: {SPIGOT_ENTITY_ACTIVATION_RANGE_ANIMALS}
+      monsters: {SPIGOT_ENTITY_ACTIVATION_RANGE_MONSTERS}
+      raiders: {SPIGOT_ENTITY_ACTIVATION_RANGE_RAIDERS}
+      misc: {SPIGOT_ENTITY_ACTIVATION_RANGE_MISC}
+      water: {SPIGOT_ENTITY_ACTIVATION_RANGE_WATER}
+      villagers: {SPIGOT_ENTITY_ACTIVATION_RANGE_VILLAGERS}
+      flying-monsters: {SPIGOT_ENTITY_ACTIVATION_RANGE_FLYING_MONSTERS}
+    entity-tracking-range:
+      players: {SPIGOT_ENTITY_TRACKING_RANGE_PLAYERS}
+      animals: {SPIGOT_ENTITY_TRACKING_RANGE_ANIMALS}
+      monsters: {SPIGOT_ENTITY_TRACKING_RANGE_MONSTERS}
+      misc: {SPIGOT_ENTITY_TRACKING_RANGE_MISC}
+      other: {SPIGOT_ENTITY_TRACKING_RANGE_OTHER}
+    seed-village: {SPIGOT_SEED_VILLAGE}
+    seed-desert: {SPIGOT_SEED_DESERT}
+    seed-igloo: {SPIGOT_SEED_IGLOO}
+    seed-jungle: {SPIGOT_SEED_JUNGLE}
+    seed-swamp: {SPIGOT_SEED_SWAMP}
+    seed-monument: {SPIGOT_SEED_MONUMENT}
+    seed-shipwreck: {SPIGOT_SEED_SHIPWRECK}
+    seed-ocean: {SPIGOT_SEED_OCEAN}
+    seed-outpost: {SPIGOT_SEED_OUTPOST}
+    seed-endcity: {SPIGOT_SEED_ENDCITY}
+    seed-slime: {SPIGOT_SEED_SLIME}
+    seed-nether:  {SPIGOT_SEED_NETHER}
+    seed-mansion: {SPIGOT_SEED_MANSION}
+    seed-fossil: {SPIGOT_SEED_FOSSIL}
+    seed-portal: {SPIGOT_SEED_PORTAL}
+    seed-ancientcity: {SPIGOT_SEED_ACIENTCITY}
+    seed-buriedtreasure: {SPIGOT_SEED_BURIEDTREASURE}
+    seed-mineshaft: {SPIGOT_SEED_MINESHAFT}
+    seed-stronghold: {SPIGOT_SEED_STRONGHOLD}
+messages:
+  restart: "{SPIGOT_MESSAGE_RESTART}"
+  whitelist: "{SPIGOT_MESSAGE_WHITELIST}"
+  unknown-command: "{SPIGOT_MESSAGE_UKOWN_COMMAND}"
+  server-full: "{SPIGOT_MESSAGE_SERVER_FULL}"
+  outdated-client: "{SPIGOT_MESSAGE_CLIENT_OUTDATED}"
+  outdated-server: "{SPIGOT_MESSAGE_SERVER_OUTDATED}"
