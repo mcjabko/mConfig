@@ -4,7 +4,7 @@ run-name: Build and publish image
 on: [push, workflow_dispatch]
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: mcjabko-infra/mconfig
+  IMAGE_NAME: mcjabko/mconfig
   IMAGE_TAG: ${{ github.run_id }}
 
 jobs:
