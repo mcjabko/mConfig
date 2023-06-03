@@ -41,8 +41,9 @@ func getTemplate(templateFile string) []byte {
 func parseEnvToTemplate(templateContent []byte) []byte {
 	output := templateContent
 	for _, value := range os.Environ() {
-		env := strings.Split(value, "=")
-		output = bytes.Replace(output, []byte(fmt.Sprintf("{%s}", env[0])), []byte(env[1]), -1)
+		env := strings.SplitN(value, "=", 2)
+		
+		output = bytes.Replace(output, []byte(fmt.Sprintf("{%s}", env[0])), []byte(fmt.Sprintf("%s", env[1])), -1)
 	}
 	return output
 }
