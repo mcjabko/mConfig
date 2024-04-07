@@ -19,6 +19,6 @@ func main() {
 	renderConfig(outputFile, templateContent)
 
 	if (os.Getenv("MCONFIG_DEBUG") == "true") {
-		fmt.Printf("Rendered %s", templateFile)
+		fmt.Printf("Rendered %s \n", templateFile)
 	}
 }
