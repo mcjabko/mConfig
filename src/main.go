@@ -1,13 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	// Parse flags
-	templateFile, outputFile := parseFlags()
+	templateFile, outputFile, envFile := parseFlags()
 
 	// Load default env
-	loadDefaultEnv()
+	loadDefaultEnv(envFile)
 
 	// Get template 
 	templateContent := getTemplate(templateFile)
@@ -15,5 +18,7 @@ func main() {
 	// Write to file
 	renderConfig(outputFile, templateContent)
 
-	fmt.Println("Config file generated successfully!")
+	if (os.Getenv("MCONFIG_DEBUG") == "true") {
+		fmt.Printf("Rendered %s", templateFile)
+	}
 }

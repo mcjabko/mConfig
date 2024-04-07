@@ -10,16 +10,17 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func parseFlags() (string, string) {
+func parseFlags() (string, string, string) {
 	templateFile := flag.String("template", "", "<template.yml>")
 	outputFile := flag.String("output", "", "<output.yml>")
+	envFile := flag.String("envFile", ".env", "<.env.defaults>")
 	flag.Parse()
 
-	return *templateFile, *outputFile
+	return *templateFile, *outputFile, *envFile
 }
 
-func loadDefaultEnv() {
-	err := godotenv.Load()
+func loadDefaultEnv(envFile string) {
+	err := godotenv.Load(envFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -43,7 +44,7 @@ func parseEnvToTemplate(templateContent []byte) []byte {
 	for _, value := range os.Environ() {
 		env := strings.SplitN(value, "=", 2)
 		
-		output = bytes.Replace(output, []byte(fmt.Sprintf("{%s}", env[0])), []byte(fmt.Sprintf("%s", env[1])), -1)
+		output = bytes.Replace(output, []byte(fmt.Sprintf("{%s}", env[0])), []byte(env[1]), -1)
 	}
 	return output
 }
