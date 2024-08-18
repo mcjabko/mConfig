@@ -34,7 +34,9 @@ func getTemplatesPaths(templateDir string) []string {
 	paths := []string{}
 
 	err := filepath.Walk(templateDir, func(path string, info fs.FileInfo, err error) error {
-		if !info.IsDir() {
+		matched, _ := regexp.Match(`\.yml$|\.yaml$|\.properties|\.json|\.txt`, []byte(path))
+
+		if !info.IsDir() && matched {
 			paths = append(paths, path)
 		}
 		return nil
