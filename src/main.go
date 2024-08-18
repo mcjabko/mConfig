@@ -5,20 +5,37 @@ import (
 	"os"
 )
 
+//"os"
+
 func main() {
+
 	// Parse flags
-	templateFile, outputFile, envFile := parseFlags()
+	templateDir, outputDir, envFile := parseFlags()
 
 	// Load default env
 	loadDefaultEnv(envFile)
 
-	// Get template 
-	templateContent := getTemplate(templateFile)
+	paths := getTemplatesPaths(templateDir)
 
-	// Write to file
-	renderConfig(outputFile, templateContent)
+	for _, path := range paths {
+		if os.Getenv("MCONFIG_DEBUG") == "true" {
+			fmt.Printf("Redering %s \n", path)
+		}
 
-	if (os.Getenv("MCONFIG_DEBUG") == "true") {
-		fmt.Printf("Rendered %s \n", templateFile)
+		// Get template
+		templateContent := getTemplate(path)
+
+		// Cut template dir
+		outputPath := cutTemplateDirFromOutputPath(path, templateDir)
+
+		// Create output subfolder if not exits
+		createSubDirsInOutput(outputPath, outputDir)
+		
+		// Write to file
+		renderConfig(fmt.Sprintf("%s/%s", outputDir, outputPath), templateContent)
+
+		if os.Getenv("MCONFIG_DEBUG") == "true" {
+			fmt.Printf("Rendered %s \n", path)
+		}
 	}
 }
