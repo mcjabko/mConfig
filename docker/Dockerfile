@@ -1,4 +1,4 @@
-FROM golang:bookworm as BUILD
+FROM golang:bookworm AS build
 
 WORKDIR /build
 
@@ -6,9 +6,9 @@ COPY . .
 
 RUN go build 
 
-FROM alpine:3.21 AS FINAL
+FROM alpine:3.21 AS final
 
-COPY --from=BUILD /src/mconfig /usr/local/bin
+COPY --from=BUILD /build/mconfig /usr/local/bin
 
 ENTRYPOINT [ "mconfig" ]
 
