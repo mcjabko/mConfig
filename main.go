@@ -5,16 +5,17 @@ import (
 	"os"
 )
 
-//"os"
 
 func main() {
-
 	// Parse flags
-	templateDir, outputDir, envFile := parseFlags()
+	templateDir, outputDir := parseFlags()
 
-	// Load default env
-	loadDefaultEnv(envFile)
-
+	if templateDir == "" || outputDir == "" {
+		fmt.Println("Usage: mconfig -templateDir <template> -outputDir <output>")
+		os.Exit(1)
+	}
+  
+	// Get templates paths
 	paths := getTemplatesPaths(templateDir)
 
 	for _, path := range paths {

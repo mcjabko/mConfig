@@ -10,24 +10,14 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-
-	"github.com/joho/godotenv"
 )
 
-func parseFlags() (string, string, string) {
+func parseFlags() (string, string) {
 	templateFile := flag.String("templateDir", "", "<template>")
 	outputFile := flag.String("outputDir", "", "<output>")
-	envFile := flag.String("envFile", ".env", "<.env.defaults>")
 	flag.Parse()
 
-	return *templateFile, *outputFile, *envFile
-}
-
-func loadDefaultEnv(envFile string) {
-	err := godotenv.Load(envFile)
-	if err != nil {
-		log.Fatal(err)
-	}
+	return *templateFile, *outputFile
 }
 
 func getTemplatesPaths(templateDir string) []string {
@@ -62,10 +52,15 @@ func getTemplate(templateFile string) []byte {
 
 func parseEnvToTemplate(templateContent []byte) []byte {
 	output := templateContent
-	for _, value := range os.Environ() {
-		env := strings.SplitN(value, "=", 2)
+	regex := regexp.MustCompile(`\$\{(.*):(.*?)\}`)
+	matches := regex.FindAllStringSubmatch(string(output), -1)
+	for _, match := range matches {
+		replaceValue := match[2]
 
-		output = bytes.Replace(output, []byte(fmt.Sprintf("{%s}", env[0])), []byte(env[1]), -1)
+		if os.Getenv(match[1]) != "" {
+			replaceValue = os.Getenv(match[1])
+		}
+		output = bytes.Replace(output, []byte(fmt.Sprintf("${%v:%v}", match[1], match[2])), []byte(replaceValue), -1)
 	}
 	return output
 }
