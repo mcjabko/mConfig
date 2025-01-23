@@ -1,12 +1,12 @@
-FROM golang:bullseye as BUILD
+FROM golang:bookworm as BUILD
 
-COPY src /src
+WORKDIR /build
 
-WORKDIR /src
+COPY . .
 
 RUN go build 
 
-FROM alpine:3.18 AS FINAL
+FROM alpine:3.21 AS FINAL
 
 COPY --from=BUILD /src/mconfig /usr/local/bin
 
